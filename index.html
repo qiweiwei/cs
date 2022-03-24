@@ -7,32 +7,32 @@
   <title>Document</title>
 </head>
 <style>
-  .img-box {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .img {
-    width: 300px;
-    height: 300px;
-  }
+  
 </style>
 <body>
-  <p id="demo"></p>
-  <button onclick="getLocation()">获取经纬度</button>
+  
 </body>
 </html>
 <script>
-  var x =document.getElementById("demo");
-  function getLocation(){
-    if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(location => {
-        x.innerHTML="纬度: " + location.coords.latitude + "<br />经度: " + location.coords.longitude;
-      });
-    }else{
-      x.innerHTML="地理位置浏览器支持";
+  let texskt = ''
+  function axios(){
+    let xmlhttp;
+    if (window.XMLHttpRequest){
+      xmlhttp = new XMLHttpRequest();
+    } else {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
+      xmlhttp.onreadystatechange = () => {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        texskt = xmlhttp.responseText;
+        console.log(xmlhttp.responseText)
+      }
+    }
+    xmlhttp.open("GET","/try/ajax/ajax_info.txt",true);
+    xmlhttp.send();
   }
+  // axios()
+  location.href = 'weixin://dl/business/?t=bg1ydJ04Zue'
+  console.log(texskt, 'texskt')
+
 </script>
